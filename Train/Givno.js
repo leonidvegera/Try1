@@ -2,12 +2,12 @@
 
 let y = 17;
 
-/* let qq = prompt('What is date today', `${y}`);
+let qq = prompt('What is date today', `${y}`);
 if (+qq === 18) {
   alert('Great job!');
 } else {
-  alert('Stupid idiot');
-} */
+  confirm('Are you stupid?');
+}
 
 let x = '5';
 let z = x + y;
@@ -129,7 +129,6 @@ function recommendRoom(adultsCount, childrenCount = 0, babiesCount = 0) {
   }
   }
   console.log(recommendRoom(8));
-
 
 
 function canTheyBook(adultsCount, childrenCount = 0) {
