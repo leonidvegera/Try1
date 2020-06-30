@@ -75,3 +75,6 @@ function printRectanglInfo(a, b) {
   console.log('---------------------')
 }
 
+
+console.log('Come on you irons!');
+
