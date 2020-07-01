@@ -33,7 +33,7 @@ switch (count) {
 console.log(`--------------------`);
 
 
-const value = 3;
+const value = 12;
 
 if (value < 5){
   console.log(`A few`);
@@ -96,3 +96,30 @@ switch (number) {
     alert('Вы ввели число 2, а может и 3');
     break;
 }
+//  какой то бред ниже с <  >. нужно разобраться!!!!!!
+// _______________________________________________________________
+// ________________________________________________________________
+let y = 31;
+switch (true) {
+  //  case 0:
+  //   console.log(`${y} Nol`);
+  //   break;
+  // case 10:
+  //   console.log(`${y} Ten`);
+  //   break;
+  case y >= 100:
+    console.log(`${y} Dohuia`);
+    break;
+  case y < 0:
+    console.log(`${y} Minus number`);
+    break;
+  case y > 15:
+    console.log(`${y} Many`);
+    break;
+  default:
+    console.log(`${y} Some number`);
+    break;
+}
+
+// -----------------------------------------------------
+// ----------------------------------------------------
