@@ -28,15 +28,46 @@ console.log(convertCurrency(10000, 0.034, 'euro'));
 // ---------------------------------------------------------
 
 function getRectangleArea(side, diagonal) {
-  let anotherSide = Math.sqrt((diagonal * diagonal) / (side * side));
-  let x = (anotherSide * anotherSide) + (side*=2);
+  let anotherSide = Math.sqrt((diagonal**2) - (side**2)); // (diagonal*diagonal) - (side*side)
+  let squre = anotherSide * side;
   if (diagonal > side) {
-    return (+x.toFixed(2));
-  } if (diagonal < side) {
+    return (+squre.toFixed(2));
+  } else {
     return 'not a rectangle';
   }
-  console.log(anotherSide);
 }
 console.log(getRectangleArea(10,20));
 
-  
+// -----------------------------------------------------------
+
+function isEven(number) {
+  if (number%2 === 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+console.log(isEven(10.2));
+
+// -----------------------------------------------------------
+
+function makeDecision(fuelRemaining, distance, fuelConsumption) {
+  let distanceCanRide = fuelRemaining * 100 / fuelConsumption;
+  if (Math.floor(distanceCanRide) > distance) {
+    return 'reach gas station by themselves';
+  } else {
+    return 'ask for help';
+  }
+}
+console.log(makeDecision(3,34,6.5));
+
+// --------------------------------------------------------------
+
+function countNetworking(K, N) {
+  const year = 12;
+  let countWithoutCarant = year - K;
+  return Math.floor(countWithoutCarant / N);
+}
+console.log(countNetworking(2,2));
+
+// ------------------------------------------------------------
