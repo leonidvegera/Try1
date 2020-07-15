@@ -1,5 +1,13 @@
 'use strict';
 
+let isFiniteA = isFinite(Infinity);
+console.log(isFiniteA);
+
+let isNotANumberB = isNaN('abd');
+console.log(isNotANumberB);
+
+//---------------------------------------------
+
 let g = 54.267;
 console.log(Math.trunc(g));
 console.log(Math.round(g));
