@@ -36,7 +36,12 @@ console.log(shortest);
 console.log(a[0]);
 console.log(a[2]);
 console.log(b.charAt(0));
-console.log(b.charAt(5))
+console.log(b.charAt(5));
+console.log(b.charCodeAt(2));  // определяет код символа (с) по номеру в строке (2) - код 99
+console.log(b.codePointAt(2));
+console.log(String.fromCharCode(99));  // определяет какой символ по коду 99 (с)
+console.log(String.fromCodePoint(99));
+
 
 // -------------------------------------------------------------
 
@@ -255,3 +260,78 @@ function makeAbbr(words) {
   } return str;                             //повертаємо строку
 }
 console.log(makeAbbr('central inteligence agency')); 
+
+console.log(`-------------------------`);
+console.log(`-------Тренування JS.Info 2-------`);
+
+function capitalizeWord(word) {  // Заменяю первый символ строки на большой. Сам!
+  let a = word[0].toUpperCase();
+  return word.replace(word[0], a);
+}
+console.log(capitalizeWord('again'));
+
+function capitalizeWord1(word1) {   // то же самое, но с помощью слайс (вырезаем строку, начиная с символа с индексом 1)
+  return word1[0].toUpperCase() + word1.slice(1);
+}
+console.log(capitalizeWord1('maybe'));
+
+function ucFirst(str) {       // до великої першої літери
+  let a = str[0].toUpperCase();
+  return (a + str.slice(1));
+}
+console.log(ucFirst('мірча'));
+
+function ucFirst1(str) {    // дл великої першої літери, але якщо були пробіли
+  let a = str.trim();
+  let b = a.charAt(0).toUpperCase(); // перша літера велика
+  return (b + a.slice(1));
+}
+console.log(ucFirst1('   говнєску '))
+// ---------------------------------------------------------
+// содержатся ли в строке такие подстроки
+function checkSpam(str) {
+  let lowStr = str.toLowerCase();
+  if (lowStr.includes('xxx') || lowStr.includes('viagra')) {   // в includes строку поиска можно прописывать прямо в метод
+    return true;
+  } else {
+    return false;
+  }
+}
+console.log(checkSpam('fgk;jk;hsdfviagradffgbg'));
+
+// ---------------------------------------------------------
+// обрезать до 15 знаков(maxlength), включая многоточие... (то есть 14 знаков. многоточие єто 1 знак)
+
+function truncate(str, maxlength) {
+  let newStr = '';
+  if (str.length > maxlength) {
+    return newStr = ((str.substr(0, maxlength - 1)) + '...');
+  } else {
+    return str;
+  }
+}
+console.log(truncate(`Прівет вам рібятушки`, 15));
+
+// решение по другому, через slice, тоже не плохо
+function truncate1(str, maxlength) {
+  if (str.length > maxlength) {
+    return ((str.slice(0, maxlength - 1)) + '...');
+  } else {
+    return str;
+  }
+}
+console.log(truncate1(`Прівет всем землянам от зеленского`, 20));
+
+// ---------------------------------------------------------
+// функция должна убирать знак валюты впереди
+
+function extractCurrencyValue(str) {
+  return +(str.replace('$', ''));      // +переводит в число, заменяем знак доллара на пустую строку
+}
+console.log(extractCurrencyValue('$1200'));  // даже если вставим пробел впереди, все сработает!
+
+// решение по другому, через slice, даже лучше, убирает все виды валюты
+function extractCurrencyValue1(str) {
+  return +(str.slice(1));             // slice возвращает строку со второго знака
+}
+console.log(extractCurrencyValue1('$2500'));  // но если вставить пробел впереди, получим NAN
