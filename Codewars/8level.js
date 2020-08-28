@@ -194,3 +194,221 @@ function fakeBin(x){
 console.log(fakeBin('526180'));
 
 // --------------------------------------------------------
+
+// !!!!!! ледь вийшло !!!!!!!!!!!!!!!  наступну букву після пробілу зробити великою
+
+// смотря кто заказівает выпивку, тот и получает (выровнять буквы разных регистров к Большой букве в начале каждого слова)
+function getDrinkByProfession(param) {
+  let new1Param = param[0].toUpperCase() + param.slice(1).toLowerCase();
+  let new2Param = '';
+  for (let i = 0; i < new1Param.length; i++) {
+    if (new1Param[i - 1] === ' ') {
+      new2Param += new1Param[i].toUpperCase();
+    } else {
+      new2Param += new1Param[i];
+    }
+  }
+  switch (new2Param) {
+    case 'Jabroni':	return "Patron Tequila";
+    case "School Counselor":	return "Anything with Alcohol";
+    case "Programmer":	return "Hipster Craft Beer";
+    case "Bike Gang Member":	return "Moonshine";
+    case "Politician":	return "Your tax dollars";
+    case "Rapper":	return "Cristal";
+    default: return "Beer";
+   }
+}
+console.log(getDrinkByProfession('scHOoL coUnSElor'));
+
+/* function getDrinkByProfession(param) {
+  param = param.toLowerCase();
+  
+  switch(param) {
+    case "jabroni": return "Patron Tequila";
+    case "school counselor": return "Anything with Alcohol";
+    case "programmer": return "Hipster Craft Beer";
+    case "bike gang member": return "Moonshine";
+    case "politician": return "Your tax dollars";
+    case "rapper": return "Cristal";
+    default: return "Beer";             //  по хитрожопому. сделал все ключи маленькими
+  }
+} */
+
+// --------------------------------------------------------
+
+// вводим имя заглавными, получаем инициалы
+function abbrevName(name){
+let str = name[0].toUpperCase();
+for (let i = 0; i < name.length; i++) {
+  if (name[i] === ' ') {
+    str += '.' + name[i+1].toUpperCase();
+  }
+}
+return str;
+}
+console.log(abbrevName('Svitlana Leonid Vegera'));
+
+// --------------------------------------------------------
+
+// польские буквы должны быть заменены на латиницу
+/* function correctPolishLetters (string) {
+let string1 = '';
+for (let i = 0; i < string.length; i++) {
+  switch (string[i]) {
+    case 'ą': return string.replace(ą, a);
+    case 'ć': return string.replace (ć, c);
+    case 'ę': return string.replace (ę, e);
+    case 'ł': return string.replace (ł, l);
+    case 'ń': return string.replace (ń, n);
+    case 'ó': return string.replace (ó, o);
+    case 'ś': return string.replace (ś, s);
+    case 'ź': return string.replace (ź, s);
+    case 'ż': return string.replace (ż, s);
+    default: return string[i];
+  }
+} return string;
+}
+console.log(correctPolishLetters('łędrzej Błądziński')); */
+
+// --------------------------------------------------------
+
+// расчитываем какая сумма чаевых должна быть в зависимости от суммы и качества чаевых (качество могут писать в смешанном регистре, сумма чаевых округляется вверх)
+function calculateTip(amount, rating) {
+  if (rating.toLowerCase() == 'terrible') {
+    return amount * 0;
+  } else if (rating.toLowerCase() == 'poor') {
+    return Math.ceil(amount * 0.05);
+  } else if (rating.toLowerCase() == 'good') {
+    return Math.ceil(amount * 0.1);
+  } else if (rating.toLowerCase() == 'great') {
+    return Math.ceil(amount * 0.15);
+  } else if (rating.toLowerCase() == 'excellent') {
+    return Math.ceil(amount * 0.2);
+  } else {
+    return 'Rating not recognised';
+  }
+}
+console.log(calculateTip(445.2,'Great'));
+
+/* function calculateTip(amount, rating) {
+  switch(rating.toLowerCase()){
+    case "terrible":return 0;
+    case "poor":return Math.ceil(amount * 0.05);
+    case "good":return Math.ceil(amount * 0.1);
+    case "great":return Math.ceil(amount * 0.15);
+    case "excellent":return Math.ceil(amount * 0.2);
+    default:return "Rating not recognised";
+  }
+} */       //додаткове рішення
+
+// --------------------------------------------------------
+
+// из массива оценок вывести среднюю оценку и округлить вниз
+function getAverage(marks){
+  let count = 0;
+  for (let i = 0; i < marks.length; i++) {
+    count += marks[i];
+  }
+  return Math.floor(count / marks.length);
+}
+console.log(getAverage([1,2,3,4,5]));
+
+// --------------------------------------------------------
+
+function getPlanetName(id) {
+  var name;
+  switch(id) {
+    case 1:
+      return name = 'Mercury';
+    case 2:
+      return name = 'Venus';
+    case 3:
+      return name = 'Earth';
+    case 4:
+      return name = 'Mars';
+    case 5:
+      return name = 'Jupiter';
+    case 6:
+      return 'Saturn';            // можно без name =
+    case 7:
+      return 'Uranus';
+    case 8:
+      return name = 'Neptune';
+  }
+}
+console.log(getPlanetName(7));
+
+// --------------------------------------------------------
+
+// записываем в массив числа, которые ровно делятся на integer в промежутке между интегер и лимит
+function findMultiples(integer, limit) {
+  let arr = [];
+  for (let i = 1; i <= limit; i++) {
+    if (Number.isInteger(i / integer)) {     //проверка на целое число
+      arr.push(i);
+    }
+  } return arr;
+}
+console.log(findMultiples(5, 25));
+
+/* function findMultiples(int,limit){
+  let result = []
+  for (let i = int; i<=limit ; i+=int)    // по умному, шагом является число интегер, и не нужна проверка на целое число!
+    result.push(i)
+  return result
+} */
+
+// --------------------------------------------------------
+
+//шукаємо в масиві а елементи х. якщо є - тру, якщо ні - фолс
+function check(a, x) {
+  for (let i = 0; i < a.length; i++) {
+    if (a.includes(x)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+console.log(check([80, 117, 115, 45, 90, 13], 45));
+
+//const check = (a,x) => a.includes(x);     коротко и круто
+
+/* function check(a,x){
+  return a.includes(x);
+}; */       //                       або так
+
+// --------------------------------------------------------
+
+//з масива вибрати числа що більше 0 і додати їх між собою
+
+/* function positiveSum(arr) {
+let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] >= 0) {
+      sum += arr[i];
+    }
+  } return sum;
+}
+console.log(positiveSum[2, 4, 6, 10]);
+
+ */
+
+// --------------------------------------------------------
+
+function arrayMadness(a, b) {
+  let sqrSum;
+  let cubSum;
+  if (sqrSum > cubSum) {
+    return true;
+  } else {
+    return false;
+  }
+  for (let i = 0; i < a.length; i++) {
+    sqrSum += (a[i]**2);
+  }
+  for (let i = 0; i < b.length; i++) {
+    cubSum += (b[i])**3));
+  }
+}
+console.log(arrayMadness([4, 5, 6], [1, 2, 3])));
