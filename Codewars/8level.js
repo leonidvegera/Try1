@@ -1,5 +1,4 @@
 
-
 function weatherInfo(temperature) {
   var c = convertToCelsius(temperature);
   if (c < 0) {
@@ -344,7 +343,8 @@ console.log(getPlanetName(7));
 function findMultiples(integer, limit) {
   let arr = [];
   for (let i = 1; i <= limit; i++) {
-    if (Number.isInteger(i / integer)) {     //проверка на целое число
+    //if (Number.isInteger(i / integer)) {     //проверка на целое число
+    if (i % integer === 0) {                   // либо так
       arr.push(i);
     }
   } return arr;
@@ -381,8 +381,7 @@ console.log(check([80, 117, 115, 45, 90, 13], 45));
 // --------------------------------------------------------
 
 //з масива вибрати числа що більше 0 і додати їх між собою
-
-/* function positiveSum(arr) {
+function positiveSum(arr) {
 let sum = 0;
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] >= 0) {
@@ -390,25 +389,35 @@ let sum = 0;
     }
   } return sum;
 }
-console.log(positiveSum[2, 4, 6, 10]);
+console.log(positiveSum([2, 4, 6, 10]));
 
- */
+
 
 // --------------------------------------------------------
 
+//-----Навчився дебажити!!!!---------якщо сума квадратів першого масива більша ніж сума кубів другого масива, то тру, гавпаки фолс------------
 function arrayMadness(a, b) {
-  let sqrSum;
-  let cubSum;
+  let sqrSum = 0;
+  let cubSum = 0;
+  for (let i = 0; i < a.length; i++) {
+    sqrSum += (a[i]**=2);
+  }
+  for (let i = 0; i < b.length; i++) {
+    cubSum += ((b[i])**=3);
+  }
   if (sqrSum > cubSum) {
     return true;
   } else {
     return false;
   }
-  for (let i = 0; i < a.length; i++) {
-    sqrSum += (a[i]**2);
-  }
-  for (let i = 0; i < b.length; i++) {
-    cubSum += (b[i])**3));
-  }
 }
-console.log(arrayMadness([4, 5, 6], [1, 2, 3])));
+console.log(arrayMadness([1,2,3], [0,1,2]));
+
+// --------------------------------------------------------
+
+// з масива вибрати 2 найменші числа і додати їх між собою
+function sumTwoSmallestNumbers(numbers){  
+  numbers = numbers.sort(function(a, b) {return a - b; });  //сортуємо масив, переставляючи 2 найменші числа на позиції 0 і 1
+  return numbers[0] + numbers[1];          // повертаємо суму першого і другого елементів масиву
+}
+console.log(sumTwoSmallestNumbers([15,7,80,99,3,45,61]));
