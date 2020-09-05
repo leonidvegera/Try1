@@ -421,3 +421,40 @@ function sumTwoSmallestNumbers(numbers){
   return numbers[0] + numbers[1];          // повертаємо суму першого і другого елементів масиву
 }
 console.log(sumTwoSmallestNumbers([15,7,80,99,3,45,61]));
+
+// --------------------------------------------------------
+
+// перетворити рік на сторіччя
+function century(year) {
+  return (Math.ceil(year / 100));
+}
+console.log(century('2015'));
+
+// --------------------------------------------------------
+
+// убрать первый и последний элемент
+function removeChar(str){
+  return (str.slice(1,-1));
+ };
+console.log(removeChar('Creation'));
+
+// --------------------------------------------------------
+
+// позитивне число зробити негативним, негативне залишити негативним
+function makeNegative(num) {
+  return (num > 0) ? num *(-1) : num;
+/*   if (num > 0) {   // або так ще можна
+  return num * (-1);
+  } else {
+    return num;
+  } */
+}
+console.log(makeNegative(-0.12));
+
+// --------------------------------------------------------
+
+// прибрати пробіли з строки
+function noSpace(x) {
+  return (x.replace(/ /g,""));
+}
+console.log(noSpace('Hello my name is George Bush'));
