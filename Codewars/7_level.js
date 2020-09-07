@@ -1,4 +1,4 @@
-// порахувати кількість (a, e, i, o, u)
+// порахувати кількість голосних (a, e, i, o, u)
 function getCount(str) {
   var vowelsCount = 0;
   for (let i = 0; i < str.length; i++) {
@@ -32,6 +32,49 @@ function getCount(str) {
 } */
 
 console.log(getCount('abraceouadabra'));
+
+// -------------------------------------------------------------------------
+
+//выделить из строки знак который по центру, если число парное, то 2 знака
+function getMiddle(s) {
+  let numb = s.length / 2;
+  if (Number.isInteger(numb)) {
+    return (s.substr(numb - 1, 2));
+  } else {
+    return (s.substr(Math.floor(numb), 1));
+  }
+}
+
+/* function getMiddle(s) {
+  var middle = s.length / 2;
+  return (s.length % 2) 
+    ? s.charAt(Math.floor(middle))
+    : s.slice(middle - 1, middle + 1);   // метод middle
+     */
+
+console.log(getMiddle('A'));
+
+// -------------------------------------------------------------------------
+
+// убрать все гласные (a, e, i, o, u) из строки - сам!!
+function disemvowel(str) {
+  return str.replace(/[aeiou]/gi, ''); //замінюємо всі голосні в строці стр на пусті 
+}              // в архівійде просто перелік символів, без ком чи лапок, бо ці знаки теж видалить з строки
+
+
+/* const disemvowel = (str) => {   // можна так наприклад ще
+  const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+  let newStr = '';
+  for (let i = 0; i <= str.length; i++) {
+    let char = str.charAt(i);
+    if (vowels.indexOf(char) == -1) {  //якщо в строці (архіві) немає символу з індексом і, то
+      newStr += char;       //цей символ додається в нову строку
+    }
+  }
+    return newStr;
+}; */
+
+console.log(disemvowel('This website, is for losers LOL!'));
 
 // -------------------------------------------------------------------------
 
