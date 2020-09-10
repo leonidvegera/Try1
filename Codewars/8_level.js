@@ -458,3 +458,21 @@ function noSpace(x) {
   return (x.replace(/ /g,""));
 }
 console.log(noSpace('Hello my name is George Bush'));
+
+// --------------------------------------------------------
+// --------------------------------------------------------
+
+function countSheeps(arrayOfSheep) {
+  let count = 0;
+  for (let i = 0; i < arrayOfSheep.length; i++) {
+    if (arrayOfSheep[i] == true) {
+      count++;
+    }
+  } return (`There are ${count} sheeps in total`);
+}
+console.log(countSheeps([true,  true,  true,  false,
+  true,  true,  true,  true ,
+  true,  false, true,  false,
+  true,  false, false, true ,
+  true,  true,  true,  true ,
+  false, false, true,  true ]));

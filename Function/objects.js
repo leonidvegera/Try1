@@ -1,5 +1,6 @@
 'use strict';
 
+
 const userFirstName1 = 'Leonid';
 const userSecondName1 = 'Vegera';
 let age1 = 38;

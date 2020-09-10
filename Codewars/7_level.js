@@ -78,3 +78,9 @@ console.log(disemvowel('This website, is for losers LOL!'));
 
 // -------------------------------------------------------------------------
 
+function findShort(s){
+  let arr = s.split(', ');
+  arr.sort(function (a, b) {return a - b;});
+  return arr[0].length;
+}
+console.log(findShort("bitcoin take over the world maybe who knows perhaps"));
