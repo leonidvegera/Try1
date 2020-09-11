@@ -55,6 +55,17 @@ console.log(numbers);
 numbers.shift();  // shift - удаление элемента в начале массива с помощью Shift
 console.log(numbers);
 
+// ---------------Тренировки методов-----------------------------
+
+let dyn = 'Демяненко, Блохин, Бессонов наши идеалы';
+let dynArr = dyn.split(', '); // разделитель по целым словам, где есть заятые
+let dynArr2 = dyn.split('');  // разделитель по буквам и символам
+console.log(dyn);
+console.log(dynArr);
+console.log(dynArr2);
+console.log(dynArr2.join('')); // восстановлена строка из массива по буквам
+console.log(dynArr.join(', ')); // восстановлена строка из массива по целым словам, где были запятые
+
 
 console.log(`-----------Mate Academy----------------
 ------------------------------------------------`);
@@ -249,3 +260,28 @@ function getPlan(currentProduction, months, percent) {
 }
 
 console.log(getPlan(1000,6,30));
+
+
+console.log(`-----------Песочница----------------
+------------------------------------------------`);
+console.log(`-----------Методы объектов----------------`);
+
+// первый такой сложный!!! запомнить!!!!!
+//Напишите функцию camelize(str), которая преобразует строки вида «my-short-string» в «myShortString».
+function camelize(str) {
+return str
+.split('-')                   // разбивает 'my-long-word' на массив ['my', 'long', 'word']
+.map((item,index) => index == 0 ? item : item[0].toUpperCase() + item.slice(1))    // Переводит в верхний регистр первые буквы всех элементом массива за исключением первого, и превращает ['my', 'long', 'word'] в ['my', 'Long', 'Word']
+.join('');                                // соединяет массив в строку ['my', 'Long', 'Word'] в 'myLongWord'
+}
+console.log(camelize("list-style-image"));
+
+//----------------------------------------------------------------
+
+//Напишите функцию filterRange(arr, a, b), которая принимает массив arr, ищет в нём элементы между a и b и отдаёт массив этих элементов.
+function filterRange(arr, a, b) {
+  return arr.filter(item => (item >= a && item <= b))
+}
+console.log(filterRange([5,3,8,1], 1, 4));
+
+//----------------------------------------------------------------
