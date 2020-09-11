@@ -78,9 +78,38 @@ console.log(disemvowel('This website, is for losers LOL!'));
 
 // -------------------------------------------------------------------------
 
+// вернуть длинну самого короткого слова
 function findShort(s){
-  let arr = s.split(', ');
-  arr.sort(function (a, b) {return a - b;});
-  return arr[0].length;
+  return s.split(' ')       //превращаем строку в масив с разделителями по пробелам
+ .sort((a,b) => a.length - b.length)    //сортируем по возрастанию длинны элементов массива
+ [0].length;         //возвращвем длинну первого элемента массива
 }
+
+/* function findShort(s){
+  var arr = s.split(' ');
+  var smallest = arr[0];     //техническая переменная (начальная самая маленькая)
+  for (var i = 0; i < arr.length; i++) {
+    if(arr[i].length < smallest.length){   //если длинна перебираемого элемента массива меньше технической переменной
+      smallest = arr[i];                   //то самая маленькая длинна обновляется до новой минимальной
+    }
+  }
+  return smallest.length;                  //возвращается длинна самой маленк переменной
+} */
 console.log(findShort("bitcoin take over the world maybe who knows perhaps"));
+
+// крутой вариант!!!!!-----!!!!-!!!!!-----!!!!!---!!!!!!
+let findShort2 = (s) =>                //создаем функцию
+s.split(' ')                           //преобразуем строку в массив
+.sort((a,b) => a.length - b.length)    //сортируем по порядку возрастания длинны элементов
+.shift()                               //получаем первый элемент из массива
+.length;                               //и возвращаем его длинну
+console.log(findShort2("bitcoin take over the world maybe who knows perhaps"));
+
+// -------------------------------------------------------------------------
+
+//каждое слово должно начинаться с большой буквы
+let str = (s) =>                               //создаём функцию
+s.split(' ')                                   //преобразуем строку в массив с разделителем по пробелу
+.map(s => s[0].toUpperCase() + s.slice(1))     //в каждом элементе первую букву делаем большой, слово дополняем остатком слова
+.join(' ');                                    //превращаем массив в строку с разделителем по пробелу
+console.log(str('How can mirrors be real if our eyes aren\'t real'));
