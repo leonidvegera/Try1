@@ -113,3 +113,28 @@ s.split(' ')                                   //преобразуем стро
 .map(s => s[0].toUpperCase() + s.slice(1))     //в каждом элементе первую букву делаем большой, слово дополняем остатком слова
 .join(' ');                                    //превращаем массив в строку с разделителем по пробелу
 console.log(str('How can mirrors be real if our eyes aren\'t real'));
+
+// -------------------------------------------------------------------------
+
+//проверяем, если квадратный корень числа н ровное число - тру, если дробное - фолс
+let isSquare = function(n){
+  return Number.isInteger(Math.sqrt(n)) ? true : false;
+  //return Math.sqrt(n) % 1 === 0;    //остаток от деления корня на единицу должен быть 0
+}
+console.log(isSquare(25));
+
+// -------------------------------------------------------------------------
+
+//каждую цифру числа в квадрат и конкатинировать получившиеся цифры
+function squareDigits(num){
+let num1 = String(num);    //превращаем цифровое значение в строку
+let str = '';              //техническая строка
+for (let i = 0; i < num1.length; i++) {    //перебираем строку
+  str += (num1[i] * num1[i]);         //квадрат каждого элемента конкатинируем к технической строке
+} return +str;                        //возвращаем число
+}
+// return Number(('' + num).split('').map(function (val) { return val * val;}).join('')); //вот круто!!!
+// return +num.toString().split('').map(i => i*i).join(''); !!!! еще круче
+// return +String(num).split('').map(function(num){return +num * +num;}).join('');
+
+console.log(squareDigits(9119));
