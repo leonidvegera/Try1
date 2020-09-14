@@ -138,3 +138,47 @@ for (let i = 0; i < num1.length; i++) {    //перебираем строку
 // return +String(num).split('').map(function(num){return +num * +num;}).join('');
 
 console.log(squareDigits(9119));
+
+
+// -------------------------------------------------------------------------
+
+//знайти найбільше і найменше число і вивести їх через пробіл
+function highAndLow(numbers) {
+let up = numbers.split(' ').sort((a,b)=> b-a);  //перемінна, в яку записали строку, перероблену в массив, і відсортовану від більшого до меншого
+return up[0] + ' ' + up.reverse()[0]; //повертаємо перший символ найбільший, і перший символ розвернутого масиву
+}
+
+/* var arr = numbers.split(' ').sort(function(a, b) { return a - b });
+  return arr[arr.length -1] + ' ' + arr[0];
+   */
+
+console.log(highAndLow('1 9 3 4 -5'));
+
+// -------------------------------------------------------------------------
+
+//("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy" !!!!!!!! Розібрати коротке!!!!!
+function accum(s) {
+  let mumble = s[0].toUpperCase();      //в технічну перемінну додаємо перший символ - 1 велика літера
+	for (let i = 1; i < s.length; i++) {   //перебір починаючи з другого символа, тобто з 1 індекса
+    mumble += '-' + s[i].toUpperCase() + s[i].toLowerCase().repeat(i);  //в перемінну з кожною ітерацією додаємо дефіс на початку, Великий символ, і всі інші маленькі символи, які будуть повторюватись і кількість раз, збільшуючись
+  } return mumble;      // повертаємо перемінну
+}
+
+// return s.split('').map((c, i) => (c.toUpperCase() + c.toLowerCase().repeat(i))).join('-');    //коротко!!!
+
+/* return s.split('')
+.map((item, index) => item.toUpperCase() + item.toLowerCase().repeat(index))
+.join('-'); */
+
+console.log(accum('RqaEzty'));
+
+// -------------------------------------------------------------------------
+
+//Установить нисходящий порядок цифр
+function descendingOrder(n){
+  return +(n.toString()
+  .split('')
+  .sort((a,b)=> b-a)
+  .join(''));
+}
+console.log(descendingOrder(123456789));

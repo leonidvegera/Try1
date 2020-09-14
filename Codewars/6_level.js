@@ -89,3 +89,19 @@ switch(names.length){
   default: return names[0] + ', ' + names[1] + ' and ' + (names.length - 2) + ' others like this';
 } */
 console.log(likes(['Peter', 'Alex', 'Mark', 'Max', 'Poc', 'Eric', 'Violet', 'Flower']));
+
+//--------------------------------------------------------------------------------------------------------------
+
+//массив должен превращаться в телефонный номер
+function createPhoneNumber(numbers) {
+let str = numbers.join('');
+return '(' + str.substr(0, 3) + ') ' + str.substr(3,3) + '-' + str.substr(6,4);
+}
+
+/* var format = "(xxx) xxx-xxxx";
+for(var i = 0; i < numbers.length; i++) {
+  format = format.replace('x', numbers[i]);
+}
+return format;
+ */
+console.log(createPhoneNumber([1,2,3,4,5,6,7,8,9,0]))
