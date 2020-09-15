@@ -562,3 +562,51 @@ while (i < haystack.length) {
 console.log(findNeedle([1,2,3,4,5,6,7,8,8,7,5,4,3,4,5,6,67,5,5,3,3,4,2,34,234,23,4,234,324,324,'needle',1,2,3,4,5,5,6,5,4,32,3,45,54]));
 
 // --------------------------------------------------------
+
+//348597 => [7,9,5,8,4,3]
+function digitize(n) {
+  return n.toString().split('').reverse().map(item => +item);  //сначала делаем из числа строку, из строки делаем массив, разворачиваем в обратном направлении и делаем элементы массива цифрами
+}
+//return String(n).split('').map(Number).reverse();  // похоже на моё
+console.log(digitize(348597));
+
+// --------------------------------------------------------
+
+//вернуть новый массив с удвоенными элементами
+function maps(x) {
+  return x.map(item => item*2);
+}
+console.log(maps([1, 2, 3]));
+
+// --------------------------------------------------------
+
+//вернуть новій массив с сумой позитивных и негативных значений
+function countPositivesSumNegatives(input) {
+  if (input.length == 0 && input == null) {
+    return [];
+  }
+  let posCount = 0;
+  let negSum = 0;
+  for (let i = 0; i < input.length; i++) {
+    if (+input[i] >= 0) {
+      posCount++;
+    } if (+input[i] < 0) {
+      negSum += input[i];
+    }
+  } return [posCount, negSum];
+}
+
+/* if (input == null || input.length == 0)
+return [];
+var positive = 0;
+var negative = 0;
+for (var i=0, l=input.length; i<l; ++i)
+{
+if (input[i] > 0)
+  ++ positive;
+else
+  negative += input[i];
+}
+return [positive, negative]; */
+
+console.log(countPositivesSumNegatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]));
