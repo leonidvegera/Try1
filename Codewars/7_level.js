@@ -182,3 +182,16 @@ function descendingOrder(n){
   .join(''));
 }
 console.log(descendingOrder(123456789));
+
+// -------------------------------------------------------------------------
+
+function XO(str) {
+  let elem1 = '';
+  let ar = str.split('').sort();
+  for (let i = 0; i < ar.length; i++) {
+    if (ar[i] === ar[i+1]) {
+      elem1 += ar[i];
+    }
+  } return elem1;
+}
+console.log(XO('xooxx'));
