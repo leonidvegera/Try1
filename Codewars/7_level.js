@@ -185,13 +185,47 @@ console.log(descendingOrder(123456789));
 
 // -------------------------------------------------------------------------
 
+//проверить на одинаковое количество х и о (нужно было лучше сравнивать длинну)
 function XO(str) {
-  let elem1 = '';
-  let ar = str.split('').sort();
-  for (let i = 0; i < ar.length; i++) {
-    if (ar[i] === ar[i+1]) {
-      elem1 += ar[i];
-    }
-  } return elem1;
+let xCount = 0;
+let oCount = 0;
+for (let i = 0; i < str.length; i++) {  //переираем строку, если х в нижн регист - плюсуем 1 к технической по х, если о, к технической о
+  if (str[i].toLowerCase() === 'x') {
+    xCount++;
+  } if (str[i].toLowerCase() === 'o') {
+    oCount++;
+  }
+} return (xCount === oCount) ? true : false; //сравниваем, если равняются то тру, если нет - фолс
 }
-console.log(XO('xooxx'));
+
+/* str = str.toLowerCase().split('');  //из строки делаем массив, все нижн регистр
+return str.filter(x => x === 'x').length === str.filter(x => x === 'o').length; */   //сравниваем две длинны подходящих значений
+
+/* let x = str.match(/x/gi);  //в переменную ищет совпадения в строке всех х в нижнем регс
+let o = str.match(/o/gi);   //в переменную ищет совпадения в строке всех о в нижнем регс
+return (x && x.length) === (o && o.length); */  //сравниваем длинну переменных
+
+/* var a = str.replace(/x/gi, ''),
+b = str.replace(/o/gi, '');
+return a.length === b.length;
+ */
+console.log(XO('xooXx'));
+
+// -------------------------------------------------------------------------
+
+//кожне нове слово з великої літери How Can Mirrors Be Real If Our Eyes Aren't Real
+let toJadenCase = function (txt) {
+  let a = txt.split('');           //технічна перемінна, в яку перероблюємо побуквенний масив зі строки
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] == ' ') {              //якщо даний символ - пробіл, то
+      a.splice(i + 1, 1, a[i+1].toUpperCase());   //наступний за ним символ вирізаємо (1шт) і вставляємо той же символ у верхньому регістрі
+    }
+  }
+  return a.join('');             //повертаємо строку з массиву
+};
+
+/*    //круто! розбивав по словам, кожне нове слово з великої літери
+     return this.split(' ').map(item => item[0].toUpperCase() + item.slice(1)).join(' ')
+};; */
+
+console.log(toJadenCase(`How can mirrors be real if our eyes aren't real`));

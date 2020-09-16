@@ -105,3 +105,74 @@ for(var i = 0; i < numbers.length; i++) {
 return format;
  */
 console.log(createPhoneNumber([1,2,3,4,5,6,7,8,9,0]))
+
+//---------------------------------------------------------------------------
+
+//если в слове больше чем 5 букв, развернуть его !!!Сам сделал!!!! через слайс замена
+function spinWords(text){
+  let t = text.split(' ');             //строку превращ в массив с пробелами и присваив в переменную
+  for (let i = 0; i < t.length; i++) {
+    if (t[i].length >= 5) {              // перебир, если длинна элем массива больше или равно 5
+      t.splice(i, 1, (t[i].split('').reverse().join('')));  //то в массиве t на текущ позиции i удаляем 1 єлем-т и вставляем вместо него (элемент, разбитый на символы, развернутые в обратном порядке, и снова склееный в элемент))
+    }
+  } return t.join(' ');        //возвращаем строку, разделённую пробелами
+}
+/* function spinWords(words){            //map function как функция!!!! хорошо отработало
+  return words.split(' ').map(function (word) {
+    return (word.length > 4) ? word.split('').reverse().join('') : word;
+  })
+  .join(' ');
+} */
+
+//return str.split(' ').map( w => w.length<5 ? w : w.split('').reverse().join('') ).join(' ');
+
+console.log(spinWords('Hey fellow warriors'));
+
+//---------------------------------------------------------------------------
+
+//преобразовываем в двоичную систему и сумируем единицы (1234 is 10011010010 -- 5)
+var countBits = function(n) {
+  if (n === 0) {
+    return 0;
+  } if (n > 0) {
+    let biNum = n.toString(2);
+    let got = biNum.match(/1/g).reduce((sum, current) => sum + Number(current), 0);
+    return got;
+  }
+};
+// return n.toString(2).split('0').join('').length; //круто!!! число в двоичное, превращаем в массив с разделит 0 (ноли пропадают), обратно в массив(одни единицы), длинна всех элементов 1
+
+// return n.toString(2).replace(/0/g,'').length;  //замінили 0 на пусту строку і вивели довжину
+
+//n.toString(2).split('').filter(ele => ele == 1).length    //або через фільтр!!!
+
+/* a = n.toString(2).match(/1/g);      //цифру до двоічного коду і вибірку всіх одиниць!!
+  return a == null ? 0 : a.length */   //якщо повертає нал, тоді 0, або ж довжину строки що вийшла
+
+console.log(countBits(1234));
+//------------------------------------ ще одне моє рішення!!!!
+var countBits1 = function(n) {
+ return (n.toString(2)        //число до двоїчного
+ .split('')                   //строку в массив (по знаку)
+ .sort((a,b) => b-a)          //сортуємо, спочатку 1, потім 0
+ .join('')                    //массив перетворюємо на строку
+ .lastIndexOf(1)) + 1;        //знаходимо місце останньої одиниці + 1 (кількість одиниць)
+}
+console.log(countBits1(1234));
+
+//---------------------------------------------------------------------------
+
+//найти в массиве единственное четное или не четное число
+function findOutlier(integers) {
+let a = integers.filter(item => item % 2 === 0);  //создаём переменную с масивом чётных чисел
+return (a.length > 1) ? +(integers.filter(item => item % 2 !== 0)).join('') : +a.join('');
+}                         // если массив четных длиннее 1 числа, значит ищем дальше фильтром нечётное число, и превращаем из массива в строку, и унарным в число; в другом случае это переменная а, которую передел в строку и унарным+ в число
+console.log(findOutlier([2, 4, 0, 100, 4, 11, 2602, 36]));
+
+/* function findOutlier(integers){                //можна і так, але я крутіше зробив
+  const even = integers.filter(int => int % 2 === 0);
+  const odd  = integers.filter(int => int % 2 !== 0);
+  return even.length === 1 ? even[0] : odd[0];
+} */
+
+//---------------------------------------------------------------------------
