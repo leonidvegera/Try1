@@ -609,4 +609,24 @@ else
 }
 return [positive, negative]; */
 
+/* if (!Array.isArray(input) || !input.length) return [];
+return input.reduce((arr, n) => {
+  if (n > 0) arr[0]++;
+  if (n < 0) arr[1] += n;
+  return arr;
+}, [0, 0]); */
+
 console.log(countPositivesSumNegatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]));
+
+// --------------------------------------------------------
+
+//создать массив, от 1 до введённой цифры (10) // --> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+function monkeyCount(n) {
+  let arr = [];
+  for (let i = 1; i <= n; i++) {
+    arr.push(i);
+  } return arr;
+  }
+  console.log(monkeyCount(10));
+
+  // --------------------------------------------------------
