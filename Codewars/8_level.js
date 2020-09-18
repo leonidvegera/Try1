@@ -629,4 +629,52 @@ function monkeyCount(n) {
   }
   console.log(monkeyCount(10));
 
-  // --------------------------------------------------------
+// --------------------------------------------------------
+
+//поменять знаки в массиве
+function invert(array) {
+return array.map(item => -item);  //сам, коротко і швидко
+
+/* let dec = []                   //трохи довше, розписав
+for (let value of array) {
+  dec.push(-value);;
+} return dec; */
+}
+console.log(invert([1,-2,3,-4,5]));
+
+// --------------------------------------------------------
+
+//посчитать среднюю цифру в массиве
+function find_average(array) {
+return (array.reduce((sum,item)=>sum+item,0)/array.length);  //плюсуем все элементы и делим на количество элементов
+
+/* let sum = 0;
+for (let val of array) {   //або через перебір без і
+  sum += val;  
+} return sum / array.length; */
+
+/* let sum = 0;   //або так через і
+let i = 0;
+for (i; i <array.length; i++) {
+  sum += array[i];
+}return sum / i; */
+}
+console.log(find_average([1,2,3,4,5]));
+
+// --------------------------------------------------------
+
+//если тру, зарплата умнож на бонусы, если нет то только зп
+function bonusTime(salary, bonus) {
+  switch (bonus) {
+    case true: 
+      return '\u00A3' + salary * 10;
+    case false:
+      return '\u00A3' + salary;
+  }
+//return '\u00A3' + salary * (bonus ? 10 : 1);   //это круто!! коротко и ясно
+
+//return '£'+(bonus ? salary*10:salary)  //или так!!
+}
+console.log(bonusTime(10000, true))
+
+// --------------------------------------------------------
