@@ -278,10 +278,52 @@ console.log(camelize("list-style-image"));
 
 //----------------------------------------------------------------
 
-//Напишите функцию filterRange(arr, a, b), которая принимает массив arr, ищет в нём элементы между a и b и отдаёт массив этих элементов.
+//Напишите функцию filterRange(arr, a, b), которая принимает массив arr, ищет в нём элементы между a и b и отдаёт массив этих элементов. Функция должна возвращать новый массив и не изменять исходный
+let arr_n = [5,3,8,1];
+let a_a = 1;
+let b_b = 4;
+
 function filterRange(arr, a, b) {
-  return arr.filter(item => (item >= a && item <= b))
+  return arr.filter(item => (item >= a && item <= b))  //фильтрует заданные величины между а и б
 }
-console.log(filterRange([5,3,8,1], 1, 4));
+
+let filtered_q = filterRange(arr_n, a_a, b_b);
+console.log(filterRange(arr_n, a_a, b_b));   //отфильтрованое
+console.log(filtered_q);                    //то же самое, отфильтрованое
+console.log(arr_n);                        //первичный массив не изменный
 
 //----------------------------------------------------------------
+
+//принимает массив arr и удаляет из него все значения кроме тех, которые находятся между a и b
+function filterRangeInPlace(arr, a, b) {
+return arr.filter(item => item>= a && item <= b); //фильтрует и возвращает массив, с элементами больше а и меньше б
+/* for (let i = 0; i < arr.length; i++) {  //или так указано в песочнице
+  if (arr[i] < a || arr[i] > b) {      //отбираем элементы, если за пределами интервала
+    arr.splice(i, 1);                //И удаляем их
+  }
+} return arr; */
+}
+console.log(filterRangeInPlace([5, 3, 8, 1], 1, 4));
+
+//---------------------------------------------------------------
+
+//сортировать в порядке по убыванию
+function poUbyvaniyu(x) {
+  return x.sort((a,b)=> b-a);
+}
+console.log(poUbyvaniyu([5, 2, 1, -10, 8]));
+
+//---------------------------------------------------------------
+
+//++ скопировать и сортировать массив. Нужно получить отсортированную копию, но оставить arr неизменённым.
+let arr = (['HTML', 'JavaScript', 'CSS']);
+
+function copySorted(arr) {
+return arr.slice().sort();
+}
+
+let sorted = copySorted(arr);
+console.log(sorted); //отсортировалась
+console.log(arr);  //осталась не изменной
+
+//---------------------------------------------------------------
