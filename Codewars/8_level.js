@@ -678,3 +678,42 @@ function bonusTime(salary, bonus) {
 console.log(bonusTime(10000, true))
 
 // --------------------------------------------------------
+
+//В тексте заменить все T на U
+function DNAtoRNA(dna) {
+  let word = '';
+  for (let letter of dna) {
+    if (letter == 'T') {
+      word += 'U';
+    } else {
+      word += letter;
+    }
+  }return word;
+
+/* let word = '';                     
+for (let letter of dna) {
+(letter === 'T') ? (word += 'U') : word+=letter;   //можна так, але тут if не потрібен!!
+} return word; */
+
+//return dna.replace(/T/g, 'U');  //+++++++++++++коротко и круто!!!+++++++  повернути заміну елементів
+
+//return dna.split("T").join("U");  //++++превращаем в массив с разделителем на месте Т, возвращвем в строку с разделит У на том же месте!!!
+
+}
+console.log(DNAtoRNA('GCAT'));
+
+// --------------------------------------------------------
+
+//сумировать все числа в массиве
+function sum(numbers) {
+return numbers.reduce((sum, numb) => sum+numb, 0)   //накопительно сумировали все числа
+
+/* let nums = 0;
+for (let integers of numbers) {    //через перебор
+nums += integers;
+} return nums; */
+
+};
+console.log(sum([1, 5.2, 4, 0, -1]));
+
+// --------------------------------------------------------
