@@ -756,3 +756,48 @@ function check(a, x) {
 console.log(check(['what', 'a', 'great', 'kata'], 'kata'));
 
 // --------------------------------------------------------
+
+//если первая буква слова R, то играет на банджо, если другая, то имя не играет. все сам!!!
+function areYouPlayingBanjo(name) {
+  return (name.split('').shift().toLowerCase() === 'r') ? (`${name} plays banjo`) : (`${name} does not play banjo`);
+/*   for (let word of name) {        //или можно так
+    return (word.toLowerCase() === 'r') ? (name + ' plays banjo') : (name + ' does not play banjo');
+  } */
+  //return (name[0].toLowerCase() === 'r') ? (name + ' plays banjo') : (name + ' does not play banjo');  //так еще проще
+}
+console.log(areYouPlayingBanjo('Rikke'));
+
+// --------------------------------------------------------
+
+//одна функция находит наименьшее значение масива, вторая наибольшее
+var min = function(list){
+  return list.sort((a,b) => a-b).shift();
+/*   let res = list[0];
+   for(let i = 1; i < list.length; i++){
+   if(list[i] < res){res = list[i]; }
+   }
+  return res; */
+}
+var max = function(list){
+  return list.sort((a,b) => b-a).shift();
+/* let res = list[0];
+  for(let i = 1; i < list.length; i++){
+  if(list[i] > res){res = list[i]; }
+}
+ return res; */
+}
+console.log(min([-52, 56, 30, 29, -54, 0, -110]));
+console.log(max([4,6,2,1,9,63,-134,566]));
+
+// --------------------------------------------------------
+
+//відкидаємо найбільший і найменший елемент масива і сумуємо мід собою те що залишилось
+function sumArray(array) {
+if (array) {
+  let newAr = array.sort((a,b) => a-b).slice(1,-1);
+  return newAr.reduce((sum,item) => sum+item, 0);
+} else {
+  return 0;
+}
+}
+console.log(sumArray([6, 2, 1, 8, 10]));
