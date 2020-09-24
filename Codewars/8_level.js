@@ -750,6 +750,8 @@ console.log(shark(24, 0, 4, 8, true));
 //если массив а включает х тру, если нет фолс
 function check(a, x) {
   return a.includes(x) ? true : false;
+  //return a.includes(x);   //ще коротше
+  //return a.indexOf(x) > -1 ? true : false;   //або так
 }
 console.log(check(['what', 'a', 'great', 'kata'], 'kata'));
 
