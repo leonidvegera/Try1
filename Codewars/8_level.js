@@ -717,3 +717,40 @@ nums += integers;
 console.log(sum([1, 5.2, 4, 0, -1]));
 
 // --------------------------------------------------------
+
+function shark(pontoonDistance, sharkDistance, youSpeed, sharkSpeed, dolphin){
+  let myTime = pontoonDistance / youSpeed;
+  let sharkTime = sharkDistance / sharkSpeed;
+  if (dolphin) {                       //якщо є дельфін, акула повільніша вдвічі
+    if (myTime < (sharkTime * 2)) {     //якщо мій час менший ніж акули, значить я вижив
+      return 'Alive!';
+    } else {
+      return 'Shark Bait!';
+    }
+  } else {
+    if (myTime < sharkTime){
+      return 'Alive!';
+    } else {
+      return 'Shark Bait!';
+    }
+  }
+/*   if(dolphin){   //круто і швидко. якщо є дельфін, швидкість акули ділимо на 2
+    sharkSpeed /= 2;  
+  }
+  return pontoonDistance/youSpeed < sharkDistance/sharkSpeed ? "Alive!" : "Shark Bait!"; */
+
+/*   let youTime = pontoonDistance / youSpeed         теж круто
+  let sharkTime = sharkDistance / (dolphin ? sharkSpeed / 2 : sharkSpeed)   //!!!! можна так - ділити на Якщо є дельфін (швидк акули в 2 рази менше), і якщо немає
+  return sharkTime < youTime ? 'Shark Bait!' : 'Alive!' */
+}
+console.log(shark(24, 0, 4, 8, true));
+
+// --------------------------------------------------------
+
+//если массив а включает х тру, если нет фолс
+function check(a, x) {
+  return a.includes(x) ? true : false;
+}
+console.log(check(['what', 'a', 'great', 'kata'], 'kata'));
+
+// --------------------------------------------------------
