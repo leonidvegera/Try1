@@ -801,3 +801,48 @@ if (array) {
 }
 }
 console.log(sumArray([6, 2, 1, 8, 10]));
+
+// --------------------------------------------------------
+
+//слова в обратном порядке
+function reverseWords(str){
+  return str.split(' ').reverse().join(' ');
+/*   var reverse = [];
+  var words = str.split(" ");
+  for(let i=words.length-1; i>=0; i--){
+    reverse.push(words[i]);
+    
+  }
+  return reverse.join(" ") */
+}
+console.log(reverseWords('The greatest victory is that which requires no battle'));
+
+// --------------------------------------------------------
+
+//найти сумму массивов
+function arrayPlusArray(arr1, arr2) {
+  return arr1.reduce((result,item) => result + item, 0) + arr2.reduce((result,item) => result+item, 0);
+/* let res1 = 0;
+let res2 = 0;
+for (let integ1 of arr1) {
+  res1 += integ1;
+} for (let integ2 of arr2) {
+  res2 += integ2;
+} return res1 + res2*/
+} 
+//return arr1.concat(arr2).reduce((acc, cur) => acc + cur); //вот круто! сначала обїединяем массиві в один, а потом дальше..
+//return [...arr1, ...arr2].reduce((a, b) => a + b, 0); //или так
+console.log(arrayPlusArray([1, 2, 3], [4, 5, 6]));
+
+// --------------------------------------------------------
+
+//Example : n=5 >> [5,4,3,2,1]
+const reverseSeq = n => {
+  let arr = [];
+  for (let i = n; i > 0; i--){
+    arr.push(i);
+  } return arr;
+};
+console.log(reverseSeq(5));
+
+// --------------------------------------------------------

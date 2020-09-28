@@ -229,3 +229,31 @@ let toJadenCase = function (txt) {
 };; */
 
 console.log(toJadenCase(`How can mirrors be real if our eyes aren't real`));
+
+// -------------------------------------------------------------------------
+
+//([1,'a','b',0,15]) == [1,0,15]
+function filter_list(l) {
+  return l.filter((item) => item === item/1);
+  //return l.filter(c => typeof c === 'number');  //проверка на число
+  //return l.filter(Number.isInteger);  //круто!!!
+  //return typeof elem != "string";  //так тоже норм
+}
+console.log(filter_list([1,'a','b',0,15]));
+
+// -------------------------------------------------------------------------
+
+//есть ли в слове повторяющиеся буквы
+function isIsogram(str){
+/*   for (let i = 0; i < str.length; i++) {
+    for (let j = i+1; j < str.length; j++) {
+      if (str[i].toLowerCase() === str[j].toLowerCase()) {
+        return false;
+      }
+    }
+  } return true; */
+  //return !str.match(/([a-z]).*\1/i)  //через регулярные
+}
+console.log(isIsogram('Dermatoglyphics'));
+
+// -------------------------------------------------------------------------
