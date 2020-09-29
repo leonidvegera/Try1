@@ -245,15 +245,33 @@ console.log(filter_list([1,'a','b',0,15]));
 
 //есть ли в слове повторяющиеся буквы
 function isIsogram(str){
-/*   for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i++) {
     for (let j = i+1; j < str.length; j++) {
       if (str[i].toLowerCase() === str[j].toLowerCase()) {
         return false;
       }
     }
-  } return true; */
+  } return true;
   //return !str.match(/([a-z]).*\1/i)  //через регулярные
 }
 console.log(isIsogram('Dermatoglyphics'));
+
+// -------------------------------------------------------------------------
+
+function getSum( a,b ) {
+  let numb = 0;
+  if (a<b) {
+    for (let i=a; i<=b; i++) {
+    numb += i;
+  }
+  }if (a>b) {
+    for (let i=b; i<=a; i++) {
+    numb += i;
+    }
+  }if (a===b) {
+    numb = a;
+  } return numb;
+}
+console.log(getSum(1,1));
 
 // -------------------------------------------------------------------------
