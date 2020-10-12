@@ -132,14 +132,48 @@ console.log(doublePower(5));
 
 console.log(`-------Get speed statistic-------`);
 
-/* function getSpeedStatistic(testResults) {
-  let testResultsMin = [];
-  let testResultsMax = [];
-  let testResultsMid = [];
-  for (let i = 0; i < testResults.length; i++) {
-    if 
+
+function getSpeedStatistic(testResults) {
+  const result = [];
+  let testResultsMin = testResults[0];
+  let testResultsMax = testResults[0];
+  let testResultsMid = 0;
+
+  if (testResults != '') {
+    for (let i = 1; i < testResults.length; i++) {
+      if (testResults[i] < testResultsMin) {
+        testResultsMin = testResults[i];
+      }
+    } 
+  } else {
+    testResultsMin = 0;
   }
-} */
+
+  if (testResults != '') {
+    for (let i = 1; i < testResults.length; i++) {
+      if (testResults[i] > testResultsMax) {
+        testResultsMax = testResults[i];
+      }
+    }
+  } else {
+    testResultsMax = 0;
+  }
+
+  if (testResults != '') {
+    for (let i = 0; i < testResults.length; i++) {
+      testResultsMid += testResults[i];
+    }
+    testResultsMid = Math.floor(testResultsMid/testResults.length);
+  } else {
+    testResultsMid = 0;
+  }
+  
+  result.push(testResultsMin, testResultsMax, testResultsMid);
+
+  return result;
+}
+console.log(getSpeedStatistic([8, 9, 9, 9]));
+console.log(getSpeedStatistic([]));
 
 
 console.log(`-------Compare robots-------`);         // !!! Все розрахував і зробив сам з першого разу!!
@@ -169,24 +203,29 @@ console.log(compareRobots([10,15,2,4,9], [8,7,6,4,5]));
 
 console.log(`--------Is sorted---------`);
 
-//function isSorted(boxes) {
-/*   let indexOfBox = '';
-  for (let i = 0; i < boxes.length; i++) {
-     indexOfBox += boxes[i];
-      console.log(i);
-   
-  } */
-/*   let indexOfBox = '';
-  for (let i = 0; i < boxes.length; i++) {
-    indexOfBox += boxes[i];
-    if ((indexOfBox.charCodeAt(i) + 1) <= (indexOfBox.charCodeAt(i + 1))) {
-    continue;
+
+function isSorted(boxes) {
+  const sybls = boxes.join('');
+  let count = 0;
+
+  if (sybls != '') {
+    for (let i = 0; i < sybls.length; i++) {
+      if ((sybls.charCodeAt(i) <= sybls.charCodeAt(i + 1)) || sybls === '') {
+        count++;
+      } else {
+        break;
+      }
+    } 
   } else {
-    return false;
+    return true;
   }
-} return true;
-} */
-//console.log(isSorted([0,1,2,3,'b','c','d']));
+  console.log(sybls);
+  console.log(sybls.length);
+  console.log(count);
+
+  return (count+1 === sybls.length) ? true : false;
+}
+console.log(isSorted([0, 1, 2, 2, 2, 3, 'a', 'b', 'w']));
 
 
 console.log(`-------Get location-------`);  // Ніхуя не зрозумів. Треба розбиратись

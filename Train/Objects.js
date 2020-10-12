@@ -150,10 +150,20 @@ function addFullName(user) {
 console.log(`-------RestoreNames-------`);
 
 function restoreNames(users) {
-  // write code here
+  //let name = firstName[2];
+  const val = Object.entries(users);
+  console.log(val);
+  const name = val.join(' ').split(' ').splice(2,1).join(' ');
+  users.firstName = name;
+  //const newName = Object.values(name);
+  //console.log(newName);
+
+
 }
+console.log(restoreNames({firstName: undefined, lastName: 'House', fullName: 'Gregory House'}));
 
 console.log(`-------removeFemaleAges-------`);
+
 
 function removeFemaleAges(people) {
   if (people.gender === 'female') {
