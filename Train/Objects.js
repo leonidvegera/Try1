@@ -171,3 +171,21 @@ function removeFemaleAges(people) {
   }
 }
 
+console.log(`-------count_boxes-------`);
+
+// !!!! з підказки роми апостола!! йдемо в циклі по boxes. дивимось на букву, якщо такої букви в obj немає - пишемо для цеї букви 1.
+// якщо така буква вже є в obj  - збільшуємо значення на 1
+function countBoxes(boxes) {
+  const obj = {};
+
+  for (let i = 0; i < boxes.length; i++) {
+    if (obj.hasOwnProperty(boxes[i]) === false) {
+      obj[boxes[i]] = 1;
+    } else {
+      obj[boxes[i]] += 1;
+    }
+  }
+
+  return obj;
+}
+console.log(countBoxes(''));
