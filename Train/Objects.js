@@ -149,27 +149,61 @@ function addFullName(user) {
 
 console.log(`-------RestoreNames-------`);
 
+//востановим имена пользователей users в которых firstName равно undefined
+// сам об'єкт знаходиться в масиві. спочатку заходимо в середину масиву ( users[prop] ) і рухаємось далі до потрібного ключа через .
 function restoreNames(users) {
-  //let name = firstName[2];
-  const val = Object.entries(users);
-  console.log(val);
-  const name = val.join(' ').split(' ').splice(2,1).join(' ');
-  users.firstName = name;
-  //const newName = Object.values(name);
-  //console.log(newName);
-
-
+  for (let prop in users) {
+    users[prop].firstName = users[prop].fullName.split(' ').splice(0,1).join();
+    console.log(users[prop]);
+    console.log(users[prop].fullName);
+  }
+  return users;
 }
-console.log(restoreNames({firstName: undefined, lastName: 'House', fullName: 'Gregory House'}));
+console.log(restoreNames([{firstName: undefined, lastName: 'House', fullName: 'Gregory House'}]));
+
 
 console.log(`-------removeFemaleAges-------`);
 
-
+//дано масив об'єктів, тому при переборі ключів спочатку заходимо в масив[], далі в .ключ
 function removeFemaleAges(people) {
-  if (people.gender === 'female') {
-    delete people.age;
+  for (let prop in people) {
+    if (people[prop].gender === 'female') {         //якщо стать жіноча
+      delete people[prop].age;                     //видаляємо вік
+    }
   }
+  return people;
 }
+console.log(removeFemaleAges([
+  { name: 'Lilia', gender: 'female', age: 23 },
+  { name: 'Robert', gender: 'male', age: 51 },
+  { name: 'Katarina', gender: 'female', age: 19 },
+  { name: 'Carolyn', gender: 'female', age: 35 },
+  { name: 'Michael', gender: 'male', age: 31 },
+  ]));
+
+
+console.log(`-------getOutdated-------`);
+
+//Функция getOutdated принимает массив роботов robots и возвращает массив индексов для роботов, у которых core_version меньше новой версии newVersion ПО.
+const robots = [
+  {core_version: 9},
+  {core_version: 13}, 
+  {core_version: 16}, 
+  {core_version: 9}, 
+  {core_version: 14}];
+
+function getOutdated(robots, newVersion) {
+  let result = [];
+  for (let i = 0; i < robots.length; i++) {
+    if (robots[i].core_version < newVersion) {
+      result.push(i);
+    }
+  }
+
+  return result;
+}
+console.log(getOutdated(robots, 10));
+
 
 console.log(`-------count_boxes-------`);
 
@@ -188,4 +222,23 @@ function countBoxes(boxes) {
 
   return obj;
 }
-console.log(countBoxes(''));
+console.log(countBoxes('aaaaca31'));
+
+
+console.log(`-------getRobotSchema-------`);
+
+//Создай функцию getRobotSchema, которая принимает объект robot и возвращает набор ключей и типы значений, которые в них сохраняться. Результат должен выглядеть так: [[key, type], [key, type] ...]
+const robot = {
+  version: 16,
+  name: 'Cleaner 3000',
+  coords: [345, 12],
+};
+
+function getRobotSchema(robot) {
+  for (let key in robot) {         //перебираем объект
+    robot[key] = typeof(robot[key]);  //каждое значение меняем на новое (тип значения)
+  }
+
+  return Object.entries(robot);  //возвращаем массив из массивов
+}
+console.log(getRobotSchema(robot));
